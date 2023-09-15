@@ -1,5 +1,4 @@
-export const fonts = {
+export default  {
     Lato: require("../../assets/fonts/Lato-Regular.ttf"),
-    Abril: require("../../assets/fonts/AbrilFatface-Regular.ttf"),
-
+    Raleway: require("../../assets/fonts/Raleway-Regular.ttf"),
 }

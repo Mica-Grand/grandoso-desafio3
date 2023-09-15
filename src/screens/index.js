@@ -1,5 +1,5 @@
-import Details from './Details/Details'
-import Home from './Home/Home'
-import TasksScreen from './Tasks/Tasks'
+import RecipesScreen from "./RecipesScreen/RecipesScreen";
+import HomeScreen from "./HomeScreen/HomeScreen";
+import DetailScreen from "./DetailScreen/DetailScreen";
 
-export { Home, TasksScreen, Details }
+export {RecipesScreen, HomeScreen, DetailScreen}
