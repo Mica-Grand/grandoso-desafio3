@@ -1,6 +1,7 @@
 import { FlatList, Text, TouchableOpacity, View } from 'react-native'
 import { Header, SearchInput } from '../../components'
 import React, { useEffect, useState } from 'react'
+
 import allRecipes from '../../data/recipes'
 import styles from './RecipesScreen.style'
 

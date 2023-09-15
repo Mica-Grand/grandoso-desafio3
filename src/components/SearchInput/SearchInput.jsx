@@ -1,7 +1,7 @@
 import { Pressable, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 
-import AntDesign from '@expo/vector-icons'
+import AntDesign from '@expo/vector-icons/AntDesign'
 import styles from './SearchInput.style'
 
 const SearchInput = ({ onSearch }) => {

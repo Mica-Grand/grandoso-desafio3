@@ -12,11 +12,20 @@ export default styles = StyleSheet.create({
   title: {
     fontSize: 30,
     marginVertical: 15,
-    // fontFamily: 'Raleway',
+    fontFamily: 'Raleway',
+    padding: 10,
   },
-  price: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginVertical: 15,
+
+ subtitle:{
+  fontSize: 20,
+  fontFamily: 'Lato',
+  padding: 10,
+  fontWeight: 'bold',
+ },
+  textContainer:{
+    fontFamily: 'Lato',
+    padding: 10,
+    flex: 1, 
   },
+
 })
