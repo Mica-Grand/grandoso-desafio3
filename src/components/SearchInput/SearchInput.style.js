@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { colors } from '../../constants/colors'
+import { StyleSheet } from 'react-native';
+import { colors } from '../../constants/colors';
 
 export default styles = StyleSheet.create({
   container: {
@@ -7,16 +7,19 @@ export default styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '90%',
-    paddingTop: 10,
+    marginTop: 10, 
   },
   input: {
-    color: 'white',
-    backgroundColor: colors.primary,
+    color: colors.text,
+    backgroundColor: colors.background,
     borderRadius: 8,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: colors.primary,
+    paddingVertical: 12, 
+    paddingHorizontal: 16, 
+    elevation: 2, 
     width: '80%',
     fontSize: 20,
   },
-})
+  placeholder: {
+    color: colors.text, 
+  },
+  });

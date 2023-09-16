@@ -3,7 +3,7 @@ import { colors } from '../../constants/colors'
 
 export default styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.tertiary,
     height: 80,
     width: '100%',
     justifyContent: 'center',
@@ -11,6 +11,8 @@ export default styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-    // fontFamily: 'Lato',
+    fontFamily: 'LatoBold',
+    marginTop: 10,
+    color: '#fff',
   },
 })

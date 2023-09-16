@@ -4,15 +4,19 @@ export default styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   image: {
     height: '50%',
     width: '90%',
+    alignSelf: 'center', 
+    marginTop: 20,
   },
   title: {
     fontSize: 30,
     marginVertical: 15,
-    fontFamily: 'Raleway',
+    fontFamily: 'RalewayBold',
     padding: 10,
   },
 

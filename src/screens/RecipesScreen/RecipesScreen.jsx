@@ -1,48 +1,58 @@
-import { FlatList, Text, TouchableOpacity, View } from 'react-native'
-import { Header, SearchInput } from '../../components'
-import React, { useEffect, useState } from 'react'
-
-import allRecipes from '../../data/recipes'
-import styles from './RecipesScreen.style'
+import React, { useEffect, useState } from 'react';
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { Header, SearchInput } from '../../components';
+import allRecipes from '../../data/recipes';
+import styles from './RecipesScreen.style';
 
 const RecipesScreen = ({ category, setRecipeSelected }) => {
-  const [arrRecipes, setArrRecipes] = useState([])
-  const [keyword, setKeyword] = useState('')
+  const [arrRecipes, setArrRecipes] = useState([]);
+  const [keyword, setKeyword] = useState('');
+  
+
+
 
   useEffect(() => {
     if (category) {
-      const recipes = allRecipes.filter(
-        recipe => recipe.category === category
-      )
-      const recipesFiltered = recipes.filter(recipe =>
-        recipe.title.includes(keyword)
-      )
-      setArrRecipes(recipesFiltered)
+      const recipes = allRecipes.filter(recipe => recipe.category === category);
+      const recipesFiltered = recipes.filter(recipe => recipe.title.includes(keyword));
+      setArrRecipes(recipesFiltered);
     } else {
-      const recipesFiltered = allRecipes.filter(recipe =>
-        recipe.title.includes(keyword)
-      )
-      setArrRecipes(recipesFiltered)
+      const recipesFiltered = allRecipes.filter(recipe => recipe.title.includes(keyword));
+      setArrRecipes(recipesFiltered);
     }
-  }, [category, keyword])
+  }, [category, keyword]);
+
+  const renderRecipeItem = ({ item }) => {
+    return (
+      <TouchableOpacity onPress={() => setRecipeSelected(item)} style={styles.recipeItem}>
+        <Image source={{ uri: item.thumbnail }} style={styles.thumbnail} loading="auto"/>
+        <View style={styles.recipeInfo}>
+          <View>
+            <Text style={styles.recipeTitle}>{item.title}</Text>
+            <Text style={styles.recipeDescription}>{item.description}</Text>
+          </View>
+          <TouchableOpacity onPress={() => setRecipeSelected(item)} style={styles.viewButton}>
+            <Text style={styles.viewButtonText}>Ver más</Text>
+          </TouchableOpacity>
+        </View>
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <View style={styles.container}>
       <Header title={category} />
-      <SearchInput onSearch={setKeyword} />
-      <View style={styles.listContainer}>
-        <FlatList
-          data={arrRecipes}
-          renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => setRecipeSelected(item)}>
-              <Text>{item.title}</Text>
-            </TouchableOpacity>
-          )}
-          keyExtractor={item => item.id}
-        />
+      <View style={styles.inputContainer}>
+        <SearchInput onSearch={setKeyword} />
       </View>
+      <FlatList
+        data={arrRecipes}
+        renderItem={renderRecipeItem}
+        keyExtractor={item => item.id.toString()}
+        style={styles.flatList}
+      />
     </View>
-  )
-}
+  );
+};
 
-export default RecipesScreen
+export default RecipesScreen;

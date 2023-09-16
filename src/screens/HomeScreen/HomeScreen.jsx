@@ -8,7 +8,7 @@ import styles from './HomeScreen.style'
 const HomeScreen = ({ setCategorySelected }) => {
   return (
     <View style={styles.container}>
-      <Header title={'Categories'} />
+      <Header title={'Categorías'} />
       <FlatList
         data={dataCategories}
         keyExtractor={category => category}

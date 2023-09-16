@@ -1,14 +1,13 @@
-import { Image, Text, View, ScrollView } from 'react-native'
-
-import { Header } from '../../components'
-import React from 'react'
-import styles from './DetailScreen.style'
+import { Image, Text, View, ScrollView } from 'react-native';
+import { Header } from '../../components';
+import React from 'react';
+import styles from './DetailScreen.style';
 
 const DetailScreen = ({ recipe }) => {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container} >
       <Header title={'Detalle'} />
-      <Image style={styles.image} source={{ url: recipe.images[0] }} />
+      <Image style={styles.image} source={{ uri: recipe.images[0] }} loading="auto" />
       <Text style={styles.title}>{recipe.title}</Text>
       <View style={styles.textContainer}>
         <Text>{recipe.description}</Text>
@@ -18,7 +17,7 @@ const DetailScreen = ({ recipe }) => {
         <Text>{recipe.instructions}</Text>
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 
-export default DetailScreen
+export default DetailScreen;
