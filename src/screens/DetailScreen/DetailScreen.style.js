@@ -1,4 +1,6 @@
+
 import { StyleSheet } from 'react-native'
+
 
 export default styles = StyleSheet.create({
   container: {
@@ -7,29 +9,36 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  scrollContainer: {
+    flexGrow: 1,
+    paddingBottom: 100, 
+  },
   image: {
-    height: '50%',
-    width: '90%',
-    alignSelf: 'center', 
-    marginTop: 20,
+    aspectRatio: 16 / 9,
+    width: '100%',
+    alignSelf: 'center',
   },
   title: {
     fontSize: 30,
     marginVertical: 15,
     fontFamily: 'RalewayBold',
     padding: 10,
+    marginVertical: 10,
   },
-
- subtitle:{
-  fontSize: 20,
-  fontFamily: 'Lato',
-  padding: 10,
-  fontWeight: 'bold',
- },
-  textContainer:{
+subtitleContainer:{
+  flexDirection: 'row', 
+  },
+  subtitle: {
+    fontSize: 20,
+    fontFamily: 'LatoBold',
+    padding: 10,
+    marginVertical: 10,
+  },
+  textContainer: {
     fontFamily: 'Lato',
     padding: 10,
-    flex: 1, 
+    flex: 1,
+    marginVertical: 10,
   },
+});
 
-})

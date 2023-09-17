@@ -19,7 +19,7 @@ export default [
       images: ["https://plus.unsplash.com/premium_photo-1664478291780-0c67f5fb15e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8UGFzdGElMjBjb24lMjB0b21hdGUlMjB5JTIwYWxiYWhhY2F8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60", "https://example.com/pasta-con-tomate-y-albahaca-2.jpg"],
       ingredients: "Pasta, Tomate frito, Albahaca fresca, Queso parmesano",
       instructions: 
-        "1)Cocer la pasta según las instrucciones del paquete, \n2)Mientras tanto, calentar el tomate frito en una sartén a fuego medio, \n3)Añadir la albahaca fresca al tomate frito y mezclar, \n4)Cuando la pasta esté cocida, escurrirla y añadirla a la sartén con el tomate frito, \n5)Mezclar bien y servir con queso parmesano rallado por encima",
+        "1)Cocer la pasta según las instrucciones del paquete, \n2)Mientras tanto, calentar el tomate frito en una sartén a fuego medio,\n3)Añadir la albahaca fresca al tomate frito y mezclar, \n4)Cuando la pasta esté cocida, escurrirla y añadirla a la sartén con el tomate frito, \n5)Mezclar bien y servir con queso parmesano rallado por encima",
     },
     {
       id: 3,
