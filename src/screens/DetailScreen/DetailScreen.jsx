@@ -4,10 +4,11 @@ import React from 'react';
 import styles from './DetailScreen.style';
 import { FontAwesome } from '@expo/vector-icons'
 
-const DetailScreen = ({ recipe }) => {
+const DetailScreen = ({ route }) => {
+  const {recipe} = route.params
   return (
     <View style={styles.container}>
-      <Header title={'Detalle'} />
+      {/* <Header title={'Detalle'} /> */}
       <ScrollView 
       contentContainerStyle={styles.scrollContainer}
       bounces={false}
@@ -28,4 +29,3 @@ const DetailScreen = ({ recipe }) => {
 
 
 export default DetailScreen;
-

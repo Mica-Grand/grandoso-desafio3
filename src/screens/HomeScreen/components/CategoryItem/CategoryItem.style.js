@@ -10,8 +10,8 @@ export default styles = StyleSheet.create({
     maxWidth: 500,
     height: 50,
     minHeight: 30,
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    justifyContent: 'center',
+
   },
   text:{
     fontFamily: "LatoBold",

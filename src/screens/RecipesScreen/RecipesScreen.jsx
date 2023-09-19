@@ -4,9 +4,10 @@ import { Header, SearchInput } from '../../components';
 import allRecipes from '../../data/recipes';
 import styles from './RecipesScreen.style';
 
-const RecipesScreen = ({ category, setRecipeSelected }) => {
+const RecipesScreen = ({ navigation, route }) => {
   const [arrRecipes, setArrRecipes] = useState([]);
   const [keyword, setKeyword] = useState('');
+  const {category} = route.params
   
 
 
@@ -24,14 +25,14 @@ const RecipesScreen = ({ category, setRecipeSelected }) => {
 
   const renderRecipeItem = ({ item }) => {
     return (
-      <TouchableOpacity onPress={() => setRecipeSelected(item)} style={styles.recipeItem}>
+      <TouchableOpacity style={styles.recipeItem} onPress={() => navigation.navigate("Detalle", {recipe: item})} >
         <Image source={{ uri: item.thumbnail }} style={styles.thumbnail} loading="auto"/>
         <View style={styles.recipeInfo}>
           <View>
             <Text style={styles.recipeTitle}>{item.title}</Text>
             <Text style={styles.recipeDescription}>{item.description}</Text>
           </View>
-          <TouchableOpacity onPress={() => setRecipeSelected(item)} style={styles.viewButton}>
+          <TouchableOpacity onPress={() => navigation.navigate("Detalle", {recipe: item})} style={styles.viewButton}>
             <Text style={styles.viewButtonText}>Ver más</Text>
           </TouchableOpacity>
         </View>
@@ -41,7 +42,7 @@ const RecipesScreen = ({ category, setRecipeSelected }) => {
 
   return (
     <View style={styles.container}>
-      <Header title={category} />
+      {/* <Header title={category} /> */}
       <View style={styles.inputContainer}>
         <SearchInput onSearch={setKeyword} />
       </View>

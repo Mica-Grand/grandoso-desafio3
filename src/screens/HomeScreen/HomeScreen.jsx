@@ -5,17 +5,17 @@ import React from 'react'
 import dataCategories from '../../data/dataCategories'
 import styles from './HomeScreen.style'
 
-const HomeScreen = ({ setCategorySelected }) => {
+const HomeScreen = ({  navigation }) => {
   return (
     <View style={styles.container}>
-      <Header title={'Categorías'} />
+      {/* <Header title={'Categorías'} /> */}
       <FlatList
         data={dataCategories}
         keyExtractor={category => category}
         renderItem={({ item }) => (
           <CategoryItem
             category={item}
-            setCategorySelected={setCategorySelected}
+            navigation={navigation}
           />
         )}
       />

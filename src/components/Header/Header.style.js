@@ -10,7 +10,7 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 30,
+    fontSize: 20,
     fontFamily: 'LatoBold',
     marginTop: 10,
     color: '#fff',
