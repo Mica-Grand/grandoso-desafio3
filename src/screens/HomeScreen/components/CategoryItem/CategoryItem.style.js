@@ -8,13 +8,21 @@ export default styles = StyleSheet.create({
     minWidth: 90,
     width: '85%',
     maxWidth: 500,
-    height: 50,
+    height: 90, 
     minHeight: 30,
     justifyContent: 'center',
-
   },
-  text:{
-    fontFamily: "LatoBold",
+  cardContent: {
+    flexDirection: 'row', 
+    alignItems: 'center', 
+  },
+  image: {
+    width: 40, 
+    height: 40, 
+    marginRight: 10, 
+  },
+  text: {
+    fontFamily: "Lato",
     fontSize: 18,
     textAlign: "left",
   }

@@ -11,10 +11,11 @@ const HomeScreen = ({  navigation }) => {
       {/* <Header title={'Categorías'} /> */}
       <FlatList
         data={dataCategories}
-        keyExtractor={category => category}
+        keyExtractor={category => category.title}
         renderItem={({ item }) => (
           <CategoryItem
-            category={item}
+            category={item.title}
+            picture={item.picture}
             navigation={navigation}
           />
         )}

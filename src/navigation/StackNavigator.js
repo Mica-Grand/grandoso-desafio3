@@ -11,7 +11,7 @@ function StackNavigator() {
             <Stack.Navigator initialRouteName="Home" screenOptions={({route}) =>({
                 headerShown: true,
                 headerStyle: {
-                    backgroundColor: colors.tertiary,
+                    backgroundColor: colors.primary,
                 },
                 headerTitleStyle: {
                   color: 'white',

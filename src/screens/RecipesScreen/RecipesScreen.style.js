@@ -15,7 +15,7 @@ export default StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: colors.tertiary, 
+    borderBottomColor: colors.primary, 
   },
 
   thumbnail: {
@@ -40,7 +40,7 @@ export default StyleSheet.create({
     marginTop: 10,
   },
   viewButton: {
-    backgroundColor: colors.tertiary,
+    backgroundColor: colors.primary,
     padding: 10,
     borderRadius: 5,
     marginTop: 5,
