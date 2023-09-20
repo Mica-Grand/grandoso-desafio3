@@ -1,7 +1,7 @@
 export default [
   {
     title: "Entrantes",
-    picture: "https://cdn0.recetasgratis.net/es/posts/3/2/6/ensalada_de_verduras_variadas_57623_600.jpg",
+    picture: "https://drive.google.com/file/d/1yedMFgrccWKkraOSLQU5tpBvc8B2fzWe/view?usp=sharing",
   },
   {
     title: "Platos principales",
