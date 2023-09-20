@@ -17,9 +17,9 @@ const DetailScreen = ({ route }) => {
         <Text style={styles.title}>{recipe.title}</Text>
         <View style={styles.textContainer}>
           <Text>{recipe.description}</Text>
-          <Text style={styles.subtitle}><FontAwesome name="shopping-basket" size={24} color="#A52556" />  Ingredientes:</Text>
+          <Text style={styles.subtitle}><FontAwesome name="shopping-basket" size={24} color="#A2C6BD" />  Ingredientes:</Text>
           <Text>{recipe.ingredients}</Text>
-          <Text style={styles.subtitle}><FontAwesome name="cutlery" size={24} color="#A52556" />  Instrucciones:</Text>
+          <Text style={styles.subtitle}><FontAwesome name="cutlery" size={24} color="#A2C6BD" />  Instrucciones:</Text>
           <Text>{recipe.instructions}</Text>
         </View>
       </ScrollView>

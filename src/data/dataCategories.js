@@ -1,38 +1,38 @@
 export default [
   {
-    title: "Entrantes",
+    title: "Entradas",
     picture: "https://github.com/Mica-Grand/grandoso-desafio3/blob/main/assets/img/ensalada.png?raw=true",
   },
   {
     title: "Platos principales",
-    picture: "https://example.com/imagenes/platos-principales.jpg",
+    picture: "https://github.com/Mica-Grand/grandoso-desafio3/blob/main/assets/img/spaghetti2.png?raw=true",
   },
   {
     title: "Postres",
-    picture: "https://example.com/imagenes/postres.jpg",
+    picture: "https://github.com/Mica-Grand/grandoso-desafio3/blob/main/assets/img/postre.png?raw=true",
   },
   {
     title: "Bebidas",
-    picture: "https://example.com/imagenes/bebidas.jpg",
+    picture: "https://github.com/Mica-Grand/grandoso-desafio3/blob/main/assets/img/bebida.png?raw=true",
   },
   {
     title: "Desayunos",
-    picture: "https://example.com/imagenes/desayunos.jpg",
+    picture: "https://github.com/Mica-Grand/grandoso-desafio3/blob/main/assets/img/desayuno.png?raw=true",
   },
   {
-    title: "Recetas veganas",
-    picture: "https://example.com/imagenes/recetas-veganas.jpg",
+    title: "Vegan",
+    picture: "https://github.com/Mica-Grand/grandoso-desafio3/blob/main/assets/img/vegan.png?raw=true",
   },
   {
-    title: "Recetas para celiacos",
-    picture: "https://example.com/imagenes/recetas-para-celiacos.jpg",
+    title: "Gluten free",
+    picture: "https://github.com/Mica-Grand/grandoso-desafio3/blob/main/assets/img/celiaco.png?raw=true",
   },
   {
-    title: "Recetas para fiestas",
-    picture: "https://example.com/imagenes/recetas-para-fiestas.jpg",
+    title: "Festivas",
+    picture: "https://github.com/Mica-Grand/grandoso-desafio3/blob/main/assets/img/fiesta.png?raw=true",
   },
   {
-    title: "Recetas navideñas",
-    picture: "https://example.com/imagenes/recetas-navideñas.jpg",
+    title: "Navideñas",
+    picture: "https://github.com/Mica-Grand/grandoso-desafio3/blob/main/assets/img/navidad.png?raw=true",
   },
 ]
