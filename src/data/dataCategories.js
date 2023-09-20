@@ -1,7 +1,7 @@
 export default [
   {
     title: "Entrantes",
-    picture: "https://drive.google.com/file/d/1yedMFgrccWKkraOSLQU5tpBvc8B2fzWe/view?usp=sharing",
+    picture: "https://github.com/Mica-Grand/grandoso-desafio3/blob/main/assets/img/ensalada.png?raw=true",
   },
   {
     title: "Platos principales",
