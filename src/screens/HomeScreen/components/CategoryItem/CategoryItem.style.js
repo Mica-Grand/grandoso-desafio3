@@ -17,8 +17,8 @@ export default styles = StyleSheet.create({
     alignItems: 'center', 
   },
   image: {
-    width: 40, 
-    height: 40, 
+    width: 60, 
+    height: 60, 
     marginRight: 10, 
   },
   text: {
