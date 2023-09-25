@@ -1,5 +1,5 @@
 import { Image, Text, View, ScrollView } from 'react-native';
-import { Header } from '../../components';
+import { Header, HeartButton } from '../../components';
 import React from 'react';
 import styles from './DetailScreen.style';
 import { FontAwesome } from '@expo/vector-icons'
@@ -14,7 +14,9 @@ const DetailScreen = ({ route }) => {
       bounces={false}
       showsVerticalScrollIndicator={false}>
         <Image style={styles.image} source={{ uri: recipe.images[0] }} loading="auto" />
-        <Text style={styles.title}>{recipe.title}</Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{recipe.title}   <HeartButton recipe={recipe}/></Text>
+        </View>
         <View style={styles.textContainer}>
           <Text>{recipe.description}</Text>
           <Text style={styles.subtitle}><FontAwesome name="shopping-basket" size={24} color="#A2C6BD" />  Ingredientes:</Text>

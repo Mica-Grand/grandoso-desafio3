@@ -5,45 +5,36 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
-  inputContainer:{
-    marginLeft: 5,
+    paddingHorizontal: 15,
   },
   recipeItem: {
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    paddingHorizontal: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: colors.primary, 
+    borderBottomColor: colors.primary,
   },
-
   thumbnail: {
     width: 100,
     height: 100,
     marginRight: 10,
   },
   recipeInfo: {
-    flex: 1, 
+    flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-between', 
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   recipeTitle: {
     fontSize: 18,
-    fontFamily: "RalewayBold",
+    fontFamily: 'RalewayBold',
   },
   recipeDescription: {
     fontSize: 15,
-    fontFamily: "Raleway",
+    fontFamily: 'Raleway',
     color: colors.text,
     marginTop: 10,
   },
-  buttonContainer:{
-    flexDirection: 'row',
-    alignItems: 'center'  
-  },
-
   flatList: {
     marginTop: 15,
   },

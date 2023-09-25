@@ -12,11 +12,18 @@ export default styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
     paddingBottom: 100, 
+
   },
   image: {
     aspectRatio: 16 / 9,
     width: '100%',
     alignSelf: 'center',
+  },
+  titleContainer:{
+    flex: 1,
+    flexDirection: 'row', 
+    alignItems: "center",
+  
   },
   title: {
     fontSize: 30,
