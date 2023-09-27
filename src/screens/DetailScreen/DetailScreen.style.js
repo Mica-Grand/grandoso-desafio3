@@ -47,5 +47,10 @@ subtitleContainer:{
     flex: 1,
     marginVertical: 10,
   },
+  heartContainer: {
+    flex: 1,
+    alignItems: "flex-start",
+    marginLeft: 20,
+  },
 });
 

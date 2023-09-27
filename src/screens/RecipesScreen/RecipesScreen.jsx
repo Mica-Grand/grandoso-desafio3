@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { Header, SearchInput, HeartButton } from "../../components";
 import allRecipes from "../../data/recipes";
@@ -6,10 +7,11 @@ import styles from "./RecipesScreen.style";
 import { MaterialIcons } from "@expo/vector-icons";
 import { colors } from "../../constants/colors";
 
-const RecipesScreen = ({ navigation, route }) => {
+const RecipesScreen = ({ navigation }) => {
+  const category = useSelector(state => state.explorer.categorySelected)
   const [arrRecipes, setArrRecipes] = useState([]);
   const [keyword, setKeyword] = useState("");
-  const { category } = route.params;
+  // const { category } = route.params;
 
   useEffect(() => {
     if (category) {

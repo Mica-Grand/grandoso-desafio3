@@ -38,4 +38,14 @@ export default StyleSheet.create({
   flatList: {
     marginTop: 15,
   },
+  textContainer:{
+    marginTop: 50,
+    padding: 5,
+    alignItems: 'center',
+  },
+  text:{
+    fontSize: 15,
+    fontFamily: 'RalewayBold',
+    color: colors.text,
+  }
 });

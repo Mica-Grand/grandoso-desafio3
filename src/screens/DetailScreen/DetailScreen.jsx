@@ -15,7 +15,7 @@ const DetailScreen = ({ route }) => {
       showsVerticalScrollIndicator={false}>
         <Image style={styles.image} source={{ uri: recipe.images[0] }} loading="auto" />
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{recipe.title}   <HeartButton recipe={recipe}/></Text>
+          <Text style={styles.title}>{recipe.title}</Text>
         </View>
         <View style={styles.textContainer}>
           <Text>{recipe.description}</Text>
@@ -23,6 +23,9 @@ const DetailScreen = ({ route }) => {
           <Text>{recipe.ingredients}</Text>
           <Text style={styles.subtitle}><FontAwesome name="cutlery" size={24} color="#A2C6BD" />  Instrucciones:</Text>
           <Text>{recipe.instructions}</Text>
+        </View>
+        <View style={styles.heartContainer}>
+          <HeartButton recipe={recipe}/>
         </View>
       </ScrollView>
     </View>
