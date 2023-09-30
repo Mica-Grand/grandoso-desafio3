@@ -1,0 +1,1 @@
+export const baseUrl = 'https://recetas-d6ca4-default-rtdb.firebaseio.com/'

@@ -1,36 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { Header, SearchInput, HeartButton } from "../../components";
-import allRecipes from "../../data/recipes";
 import styles from "./RecipesScreen.style";
 import { MaterialIcons } from "@expo/vector-icons";
 import { colors } from "../../constants/colors";
+import { useGetRecipesByCategoryQuery } from "../../services/recipesApi";
+import { useSelector } from "react-redux";
 
 const RecipesScreen = ({ navigation }) => {
-  const category = useSelector(state => state.explorer.categorySelected)
-  const [arrRecipes, setArrRecipes] = useState([]);
+  const category = useSelector((state) => state.explorer.categorySelected);
   const [keyword, setKeyword] = useState("");
-  // const { category } = route.params;
-
-  useEffect(() => {
-    if (category) {
-      const recipes = allRecipes.filter(
-        (recipe) => recipe.category === category
-      );
-      const recipesFiltered = recipes.filter((recipe) =>
-        recipe.title.includes(keyword)
-      );
-      setArrRecipes(recipesFiltered);
-    } else {
-      const recipesFiltered = allRecipes.filter((recipe) =>
-        recipe.title.includes(keyword)
-      );
-      setArrRecipes(recipesFiltered);
-    }
-  }, [category, keyword]);
+  const {data, isLoading} = useGetRecipesByCategoryQuery(category);
 
   const renderRecipeItem = ({ item }) => {
+  
+
     return (
       <TouchableOpacity
         style={styles.recipeItem}
@@ -57,7 +41,7 @@ const RecipesScreen = ({ navigation }) => {
               />
             </TouchableOpacity>
             <View style={{ marginLeft: 20 }}>
-              <HeartButton recipe={item}/>
+              <HeartButton recipe={item} />
             </View>
           </View>
         </View>
@@ -67,16 +51,17 @@ const RecipesScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* <Header title={category} /> */}
       <View style={styles.inputContainer}>
         <SearchInput onSearch={setKeyword} />
       </View>
+      {!isLoading && (
       <FlatList
-        data={arrRecipes}
+        data={Object.values(data)}
         renderItem={renderRecipeItem}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => (item ? item.id.toString() : '')}
         style={styles.flatList}
       />
+      )}
     </View>
   );
 };

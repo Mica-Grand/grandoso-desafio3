@@ -18,12 +18,22 @@ const DetailScreen = ({ route }) => {
           <Text style={styles.title}>{recipe.title}</Text>
         </View>
         <View style={styles.textContainer}>
-          <Text>{recipe.description}</Text>
-          <Text style={styles.subtitle}><FontAwesome name="shopping-basket" size={24} color="#A2C6BD" />  Ingredientes:</Text>
-          <Text>{recipe.ingredients}</Text>
-          <Text style={styles.subtitle}><FontAwesome name="cutlery" size={24} color="#A2C6BD" />  Instrucciones:</Text>
-          <Text>{recipe.instructions}</Text>
-        </View>
+        <Text>{recipe.description}</Text>
+        <Text style={styles.subtitle}>
+          <FontAwesome name="shopping-basket" size={24} color="#A2C6BD" /> Ingredientes:
+        </Text>
+        {recipe.ingredients.map((ingredient, index) => (
+          <Text key={index}>
+            {ingredient.name}: {ingredient.amount}
+          </Text>
+        ))}
+        <Text style={styles.subtitle}>
+          <FontAwesome name="cutlery" size={24} color="#A2C6BD" /> Instrucciones:
+        </Text>
+        {recipe.instructions.map((instruction, index) => (
+          <Text key={index}>{instruction}</Text>
+        ))}
+      </View>
         <View style={styles.heartContainer}>
           <HeartButton recipe={recipe}/>
         </View>
