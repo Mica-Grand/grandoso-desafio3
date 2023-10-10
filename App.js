@@ -3,8 +3,7 @@ import  store  from './src/store';
 import fonts from './src/global/fonts';
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from "@react-navigation/native";
-import BottomTabNavigator from './src/navigation/BottomTabNavigator';
-
+import MainNavigator from './src/navigation/MainNavigator';
 
 
 export default function App() {
@@ -18,7 +17,7 @@ export default function App() {
    return (
     <Provider  store={store}>
       <NavigationContainer>
-        <BottomTabNavigator/>
+        <MainNavigator/>
       </NavigationContainer>
     </Provider>
    )

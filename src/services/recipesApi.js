@@ -17,11 +17,28 @@ export const recipesApi = createApi( {
             `recipes.json?orderBy="category"&equalTo="${category}"`,
         }),
 
+        getProfileImage: builder.query({
+            query: localId => `profileImages/${localId}.json`,
+          }),
+          postProfileImage: builder.mutation({
+            query: ({ image, localId }) => ({
+              url: `profileImages/${localId}.json`,
+              method: 'PUT',
+              body: {
+                image: image,
+              },
+            }),
+          }),
     }),
+
+
 
 })
 
 export const {
     useGetCategoriesQuery , 
     useGetRecipesQuery, 
-    useGetRecipesByCategoryQuery }= recipesApi;
+    useGetRecipesByCategoryQuery,
+    useGetProfileImageQuery,
+    usePostProfileImageMutation,
+ }= recipesApi;
