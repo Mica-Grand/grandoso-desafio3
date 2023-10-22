@@ -4,14 +4,24 @@ import StackNavigator from "./StackNavigator";
 import { colors } from "../constants/colors";
 import fonts from "../global/fonts";
 import { StyleSheet } from 'react-native'
-import {MaterialCommunityIcons} from "@expo/vector-icons"
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import ProfileNavigator from "./ProfileNavigator";
+import { clearUser } from '../features/auth/authSlice'
+import { deleteSession } from '../db'
+import { useDispatch } from 'react-redux'
+
+
 
 
 const BottomTab=createBottomTabNavigator()
 
+
 function BottomTabNavigator () {
+  const dispatch = useDispatch()
+  const logout = () => {
+    dispatch(clearUser())
+    deleteSession()
+  }
     return (
         <BottomTab.Navigator initialRouteName="Inicio" 
         screenOptions={{
@@ -42,6 +52,8 @@ function BottomTabNavigator () {
             }} />
              <BottomTab.Screen name="Perfil" component={ProfileNavigator} options={{
               headerShown: true,
+              headerRight: () => <Feather name="log-out" size={24} color="white" onPress={logout} />,
+
               headerStyle: {
                         backgroundColor: colors.primary,
                     },

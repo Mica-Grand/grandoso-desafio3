@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import AuthStackNavigator from './AuthStackNavigator' 
 import BottomTabNavigator from './BottomTabNavigator'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCameraImage } from "../features/auth/authSlice"
+import { setCameraImage, setUser } from "../features/auth/authSlice"
 import { useGetProfileImageQuery } from "../services/recipesApi"
-
+import { fetchSession } from '../db'
 
 const MainNavigator = () => {
 
@@ -19,6 +19,21 @@ const MainNavigator = () => {
     }
   }, [data])
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const session = await fetchSession()
+        console.log('Esta es la sesion', session)
+        if (session.rows.length) {
+          console.log(session.rows._array[0])
+          const user = session.rows._array[0]
+          dispatch(setUser(user))
+        }
+      } catch (error) {
+        console.log('Error en obtener ususario', error.message)
+      }
+    })()
+  }, [])
   return user ? <BottomTabNavigator /> : <AuthStackNavigator />
 }
 

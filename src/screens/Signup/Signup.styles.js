@@ -47,6 +47,11 @@ export default StyleSheet.create({
     color: "white",
     fontFamily: "LatoBold",
   },
+  error:{
+    color: "red",
+    textAlign: 'left',
+    fontFamily: "LatoBold",
+  }
  
  
 });
