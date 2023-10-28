@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Suspense } from "react";
-import { View, Text, FlatList, Image } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import { fetchFavoriteRecipes } from "../../db";
 import styles from "./Favs.style";
+import {  useSelector } from 'react-redux'
 
-const Favs = () => {
+const Favs = ({navigation}) => {
   const favoriteRecipes = useSelector((state) => state.favs.favoriteRecipes);
+  const localId = useSelector((state) => state.auth.localId);
+
 
   const renderItem = ({ item }) => {
     return (
-      <View style={styles.recipeItem}>
+      <TouchableOpacity style={styles.recipeItem}
+      onPress={() => navigation.navigate("Detalle", { recipe: item })}
+      >
         <View>
           <Image
             source={{ uri: item.thumbnail }}
@@ -21,29 +25,27 @@ const Favs = () => {
           <Text style={styles.recipeTitle}>{item.title}</Text>
           <Text style={styles.recipeDescription}>{item.description}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
   return (
-    <Suspense fallback={<Text>Loading...</Text>}>
-      <View style={styles.container}>
-        {favoriteRecipes.length === 0 ? (
-          <View style={styles.textContainer}>
-            <Text style={styles.text}>
-              No hay recetas agregadas a favoritos.
-            </Text>
-          </View>
-        ) : (
-          <FlatList
-            data={favoriteRecipes}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id.toString()}
-            style={styles.flatList}
-          />
-        )}
-      </View>
-    </Suspense>
+    <View style={styles.container}>
+      {favoriteRecipes.length === 0 ? (
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>
+            No hay recetas agregadas a favoritos.
+          </Text>
+        </View>
+      ) : (
+        <FlatList
+          data={favoriteRecipes}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+          style={styles.flatList}
+        />
+      )}
+    </View>
   );
 };
 

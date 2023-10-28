@@ -1,39 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { colors } from '../../constants/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useDispatch, useSelector } from "react-redux";
-import { removeFavoriteRecipe, addFavoriteRecipe  } from "../../features/favs/favsSlice";
-
+import { addFavoriteRecipe, removeFavoriteRecipe } from "../../features/favs/favsSlice";
+import { addFavoriteRecipe as addFavoriteRecipeToDB, removeFavoriteRecipe as removeFavoriteRecipeFromDB } from "../../db";
 
 const HeartButton = ({ recipe }) => {
   const dispatch = useDispatch();
   const favoriteRecipes = useSelector((state) => state.favs.favoriteRecipes);
-  const [isFavorited, setIsFavorited] = useState(false);
+  const isFavorited = favoriteRecipes.some((favRecipe) => favRecipe.id === recipe.id);
+  const { localId } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    setIsFavorited(favoriteRecipes.some((favRecipe) => favRecipe.id === recipe.id));
-  }, [favoriteRecipes, recipe]);
-
-  const toggleFavorite = () => {
+  const toggleFavorite = async () => {
     if (isFavorited) {
-      dispatch(removeFavoriteRecipe(recipe));
+      dispatch(removeFavoriteRecipe(recipe.id));
+
+      await removeFavoriteRecipeFromDB(localId, recipe.id);
     } else {
       dispatch(addFavoriteRecipe(recipe));
+
+      await addFavoriteRecipeToDB(localId, recipe.id);
     }
-    setIsFavorited(!isFavorited);
   };
 
   return (
     <TouchableOpacity onPress={toggleFavorite}>
-       <MaterialCommunityIcons
-         name={isFavorited ? "heart" : "heart-outline"} 
-         size={24}
-         color={isFavorited ? colors.primary : "gray"} 
-       />
+      <MaterialCommunityIcons
+        name={isFavorited ? "heart" : "heart-outline"}
+        size={24}
+        color={isFavorited ? colors.primary : "gray"}
+      />
     </TouchableOpacity>
   );
 };
 
 export default HeartButton;
-

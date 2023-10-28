@@ -59,3 +59,66 @@ export const deleteSession = () => {
   })
   return promise
 }
+
+
+export const initFavorites = () => {
+  return new Promise((resolve, reject) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        'CREATE TABLE IF NOT EXISTS favorites (localId TEXT NOT NULL, recipeId INTEGER);',
+        [],
+        () => {
+          console.log("Table 'favorites' created successfully.");
+          resolve();
+        },
+        (_, error) => {
+          console.log("Failed to create table 'favorites':", error);
+          reject(error);
+        }
+      );
+    });
+  });
+}
+
+
+export const addFavoriteRecipe = (localId, recipeId) => {
+  const promise = new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        'INSERT INTO favorites (localId, recipeId) VALUES (?, ?);',
+        [localId, recipeId],
+        (_, result) => resolve(result),
+        (_, error) => reject(error)
+      );
+    });
+    return promise;
+  });
+};
+
+export const fetchFavoriteRecipes = (localId) => {
+  const promise = new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        'SELECT recipeId FROM favorites WHERE localId = ?;',
+        [localId],
+        (_, result) => resolve(result),
+        (_, error) => reject(error)
+      );
+    });
+    return promise;
+  });
+};
+
+export const removeFavoriteRecipe = (localId, recipeId) => {
+  const promise = new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        'DELETE FROM favorites WHERE localId = ? AND recipeId = ?;',
+        [localId, recipeId],
+        (_, result) => resolve(result),
+        (_, error) => reject(error)
+      );
+    });
+    return promise;
+  });
+};
