@@ -13,12 +13,15 @@ export const favsSlice = createSlice({
     },
     removeFavoriteRecipe: (state, action) => {
       state.favoriteRecipes = state.favoriteRecipes.filter(
-        (recipe) => recipe.id !== action.payload
+        (recipe) => recipe.id !== action.payload.id
       );
+    },
+    setFavoriteRecipes: (state, action) => {
+      state.favoriteRecipes = action.payload;
     },
   },
 });
 
-export const { addFavoriteRecipe, removeFavoriteRecipe } = favsSlice.actions;
+export const { addFavoriteRecipe, removeFavoriteRecipe, setFavoriteRecipes } = favsSlice.actions;
 
 export default favsSlice.reducer;

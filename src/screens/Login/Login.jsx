@@ -14,10 +14,9 @@ const Login = ({navigation}) => {
   const dispatch = useDispatch()
 
   const onSubmit = () => {
-    // console.log(email, password)
     triggerLogin({
       email,
-      password
+      password,
     })
       .unwrap()
       .then(result => {

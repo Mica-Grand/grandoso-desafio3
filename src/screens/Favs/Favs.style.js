@@ -1,15 +1,20 @@
-import { StyleSheet } from 'react-native';
-import { colors } from '../../constants/colors';
+import { StyleSheet } from "react-native";
+import { colors } from "../../constants/colors";
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     paddingHorizontal: 15,
   },
+
+  flatList: {
+    marginTop: 15,
+  },
+
   recipeItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: colors.primary,
@@ -21,31 +26,29 @@ export default StyleSheet.create({
   },
   recipeInfo: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   recipeTitle: {
     fontSize: 18,
-    fontFamily: 'RalewayBold',
+    fontFamily: "RalewayBold",
   },
   recipeDescription: {
     fontSize: 15,
-    fontFamily: 'Raleway',
+    fontFamily: "Raleway",
     color: colors.text,
     marginTop: 10,
   },
-  flatList: {
-    marginTop: 15,
-  },
-  textContainer:{
+
+  textContainer: {
     marginTop: 50,
     padding: 5,
-    alignItems: 'center',
+    alignItems: "center",
   },
-  text:{
+  text: {
     fontSize: 15,
-    fontFamily: 'RalewayBold',
+    fontFamily: "RalewayBold",
     color: colors.text,
-  }
+  },
 });
