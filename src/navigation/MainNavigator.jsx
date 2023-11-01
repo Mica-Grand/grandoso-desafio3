@@ -10,7 +10,11 @@ import { fetchSession } from '../db';
 const MainNavigator = () => {
   const { user, localId } = useSelector(state => state.auth);
   const dispatch = useDispatch();
-  const { data, error, isLoading } = useGetProfileImageQuery(localId);
+  const { data } = useGetProfileImageQuery(localId);
+  const { data: firebaseFavoriteRecipes, isError, isLoading } = useGetFavoriteRecipesQuery();
+
+
+
 
   useEffect(() => {
     if (data) {
@@ -34,26 +38,12 @@ const MainNavigator = () => {
     })();
   }, []);
 
-  useEffect(() => {
-    if (!isLoading) {
-      setFavoriteRecipes(data)
-    }
-  }, [isLoading])
 
-  // useEffect(() => {
-  //   const fetchFavoriteRecipes = async () => {
-  //     try {
-  //       const { data, error, isLoading } = useGetFavoriteRecipesQuery(localId);
-  //       if (data) {
-  //         dispatch(setFavoriteRecipes(data));
-  //       }
-  //     } catch (error) {
-  //       console.log('Error al obtener las recetas favoritas', error.message);
-  //     }
-  //   };
-  
-  //   fetchFavoriteRecipes();
-  // }, [localId]);
+  useEffect(() => {
+    if (firebaseFavoriteRecipes) {
+      dispatch(setFavoriteRecipes(firebaseFavoriteRecipes));
+    }
+  }, [firebaseFavoriteRecipes]);
   
   return user ? <BottomTabNavigator /> : <AuthStackNavigator />;
 };

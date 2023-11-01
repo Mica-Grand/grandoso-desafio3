@@ -1,58 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { TouchableOpacity } from "react-native";
 import { colors } from "../../constants/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  addRecipeToFavorites,
-  removeRecipeFromFavorites,
-} from "../../features/favs/favsSlice";
-import {
-  useDeleteFavoriteMutation,
-  usePostFavoriteMutation,
-} from "../../services/recipesApi";
+import { removeRecipeFromFavorites, addRecipeToFavorites, setRecipeKey } from "../../features/favs/favsSlice";
+import { usePostFavoriteMutation, useDeleteFavoriteMutation } from "../../services/recipesApi";
 
 const HeartButton = ({ recipe }) => {
   const { localId } = useSelector((state) => state.auth);
   const [triggerPost] = usePostFavoriteMutation();
   const [triggerDelete] = useDeleteFavoriteMutation();
   const dispatch = useDispatch();
+  const favoriteRecipes = useSelector((state) => state.favs.favoriteRecipes);
+  const recipeKey = useSelector((state) => state.favs.recipeKeys[recipe.id]);
+  let isFavorite = false;
 
-  const initialIsFavorite = useSelector((state) =>
-    state.favs.favoriteRecipes.some(
-      (favoriteRecipe) => favoriteRecipe.id === recipe.id
-    )
-  );
-
-  const [isFavorite, setIsFavorite] = useState(initialIsFavorite);
-
-  const toggleFavorite = async () => {
-    if (isFavorite) {
-      // const recipeKey = useSelector((state) => state.favs.recipeKeys[recipe.id]); 
-      dispatch(removeRecipeFromFavorites(recipe.id));
-      triggerDelete({ recipeId: recipe.id, localId });
-      setIsFavorite(false);
-      console.log("NotFavorite");
-    } else {
-      dispatch(addRecipeToFavorites(recipe));
-      triggerPost({ recipe, localId })
-  //     .unwrap()
-  //     .then((result) => {
-  //       console.log(result);
-  //       dispatch(setRecipeKey({ recipeId: recipe.id, recipeKey: result.name })); 
-  //     })
-  //     .catch((err) => console.log(err));
-  //   setIsFavorite(true);
-  //   console.log("isFavorited");
-  // }
-};
+  if (favoriteRecipes) {
+    isFavorite = favoriteRecipes.some((favRecipe) => favRecipe.id === recipe.id);
   }
+  const toggleFavorite = async () => {
+ 
+    if (!isFavorite) {
+      dispatch(addRecipeToFavorites(recipe));
+      triggerPost({ localId, recipe })
+        .unwrap()
+        .then((result) => {
+          console.log(result);
+          dispatch(
+            setRecipeKey({ recipeId: recipe.id, recipeKey: result.name })
+          );
+        })
+        .catch((err) => console.log(err));
+    } else if (recipeKey) {
+      triggerDelete({ localId, recipeKey })
+        .unwrap()
+        .then((result) => {
+          console.log("Delete result:", result);
+          dispatch(removeRecipeFromFavorites(recipe));
+        })
+        .catch((err) => console.log("Delete error:", err));
+    }
+};
+  
 
   return (
     <TouchableOpacity onPress={toggleFavorite}>
       <MaterialCommunityIcons
         name={isFavorite ? "heart" : "heart-outline"}
-        size={24}
+        size={26}
         color={isFavorite ? colors.primary : "gray"}
       />
     </TouchableOpacity>

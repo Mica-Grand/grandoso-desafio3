@@ -2,6 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   favoriteRecipes: [],
+  loading: false, 
+  error: null,
+  recipeKeys: {}, 
 };
 
 export const favsSlice = createSlice({
@@ -9,21 +12,26 @@ export const favsSlice = createSlice({
   initialState,
   reducers: {
     addRecipeToFavorites: (state, action) => {
-      const recipe = action.payload;
-      if (!state.favoriteRecipes.some(favoriteRecipe => favoriteRecipe.id === recipe.id)) {
-        state.favoriteRecipes.push(recipe);
-      }
+      state.favoriteRecipes.push(action.payload);
     },
     removeRecipeFromFavorites: (state, action) => {
-      const recipeId = action.payload;
-      state.favoriteRecipes = state.favoriteRecipes.filter(recipe => recipe.id !== recipeId);
-    },
+        state.favoriteRecipes = state.favoriteRecipes.filter(
+          (recipe) => recipe.id !== action.payload.id
+        );
+      },
     setFavoriteRecipes: (state, action) => {
-      state.favoriteRecipes = action.payload;
-    }
+      state.data = action.payload;
+      state.loading = false;
+      state.error = null;
+    },
+
+    setRecipeKey: (state, action) => {
+      const { recipeId, recipeKey } = action.payload;
+      state.recipeKeys[recipeId] = recipeKey;
+    },
   },
 });
 
-export const { addRecipeToFavorites, removeRecipeFromFavorites, setFavoriteRecipes } = favsSlice.actions;
+export const { addRecipeToFavorites, removeRecipeFromFavorites, setFavoriteRecipes,setRecipeKey } = favsSlice.actions;
 
 export default favsSlice.reducer;
