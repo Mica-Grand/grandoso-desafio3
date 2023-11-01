@@ -2,6 +2,7 @@ import {createApi, fetchBaseQuery} from  "@reduxjs/toolkit/query/react"
 
 import {baseUrl} from "../firebase"
 
+
 export const recipesApi = createApi( {
     reducerPath: 'recipesApi',
     baseQuery: fetchBaseQuery({baseUrl}),
@@ -29,6 +30,25 @@ export const recipesApi = createApi( {
               },
             }),
           }),
+          postFavorite: builder.mutation({
+            query:  ({ recipe, localId }) => ({
+              url: `favoriteRecipes/${localId}.json`,
+              method: 'POST',
+              body: 
+                recipe, 
+            }),
+          }),
+          
+          deleteFavorite: builder.mutation({
+            query: ({ recipeId, localId }) => ({
+              url: `favoriteRecipes/${localId}/${recipeId}.json`,
+              method: 'DELETE',
+            }),
+          }),
+
+          getFavoriteRecipes: builder.query({
+            query: localId =>  `favoriteRecipes/${localId}.json`,
+          }),
     }),
 
 
@@ -41,4 +61,8 @@ export const {
     useGetRecipesByCategoryQuery,
     useGetProfileImageQuery,
     usePostProfileImageMutation,
- }= recipesApi;
+    useGetFavoriteRecipesQuery,
+    useDeleteFavoriteMutation,
+    usePostFavoriteMutation,
+
+  }= recipesApi;
