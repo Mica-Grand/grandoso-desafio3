@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
-import { Header, SearchInput, HeartButton } from "../../components";
+import { Header, SearchInput, HeartButton, ShareItem } from "../../components";
 import styles from "./RecipesScreen.style";
 import { MaterialIcons } from "@expo/vector-icons";
 import { colors } from "../../constants/colors";
@@ -31,17 +31,22 @@ const RecipesScreen = ({ navigation }) => {
             <Text style={styles.recipeDescription}>{item.description}</Text>
           </View>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity
+            <View>
+              <TouchableOpacity
               onPress={() => navigation.navigate("Detalle", { recipe: item })}
-            >
-              <MaterialIcons
-                name="more-horiz"
-                size={28}
-                color={colors.primary}
-              />
-            </TouchableOpacity>
-            <View style={{ marginLeft: 20 }}>
+              >
+                <MaterialIcons
+                  name="more-horiz"
+                  size={28}
+                  color={colors.primary}
+                />
+              </TouchableOpacity>
+            </View>
+            <View  style={{  marginHorizontal: 10}}>
               <HeartButton recipe={item} />
+            </View>
+            <View>
+              <ShareItem recipe={item}/>
             </View>
           </View>
         </View>

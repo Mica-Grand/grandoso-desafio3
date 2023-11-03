@@ -21,8 +21,7 @@ export default styles = StyleSheet.create({
   },
   titleContainer:{
     flex: 1,
-    flexDirection: 'row', 
-    alignItems: "center",
+    flexDirection: 'column', 
   
   },
   title: {
@@ -47,10 +46,11 @@ subtitleContainer:{
     flex: 1,
     marginVertical: 10,
   },
-  heartContainer: {
-    flex: 1,
+  buttonContainer: {
+    flexDirection: 'row', 
     alignItems: "flex-start",
     marginLeft: 20,
+    marginHorizontal: 10
   },
 });
 

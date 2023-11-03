@@ -48,7 +48,7 @@ const HeartButton = ({ recipe }) => {
       <MaterialCommunityIcons
         name={isFavorite ? "heart" : "heart-outline"}
         size={26}
-        color={isFavorite ? colors.primary : "gray"}
+        color={colors.primary}
       />
     </TouchableOpacity>
   );

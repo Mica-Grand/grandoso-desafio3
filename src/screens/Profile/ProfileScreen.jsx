@@ -38,9 +38,13 @@ const ProfileScreen = () => {
     }
   };
 
-  const confirmImage = () => {
-    triggerSaveProfileImage({ image, localId });
-    console.log(result);
+  const confirmImage = async () => {
+    try {
+      const result = await triggerSaveProfileImage({ image, localId }).unwrap();
+      console.log('Resultado de la mutación:', result);
+    } catch (error) {
+      console.error('Error en la mutación:', error);
+    }
   };
 
   return (

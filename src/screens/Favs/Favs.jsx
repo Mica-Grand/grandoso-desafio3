@@ -10,7 +10,6 @@ const Favs = ({ navigation }) => {
 
   return (
     <View>
-      <Text>Tus Recetas Favoritas</Text>
       {favoriteRecipes === null || favoriteRecipes.length === 0 ? (
         <Text style={styles.noReceta}>No tienes recetas favoritas aún.</Text>
 

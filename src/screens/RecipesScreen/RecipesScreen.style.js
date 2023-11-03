@@ -27,7 +27,6 @@ export default StyleSheet.create({
     flex: 1, 
     flexDirection: 'column',
     justifyContent: 'space-between', 
-    alignItems: 'center',
   },
   recipeTitle: {
     fontSize: 18,
@@ -39,9 +38,10 @@ export default StyleSheet.create({
     color: colors.text,
     marginTop: 10,
   },
-  buttonContainer:{
+  buttonContainer: {
     flexDirection: 'row',
-    alignItems: 'center'  
+    alignItems: "baseline", 
+    marginTop: 10,
   },
 
   flatList: {

@@ -28,7 +28,6 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
-    alignItems: "center",
   },
   recipeTitle: {
     fontSize: 18,
@@ -51,4 +50,14 @@ export default StyleSheet.create({
     fontFamily: "RalewayBold",
     color: colors.text,
   },
+
+  noReceta: {
+    fontSize: 18,
+    fontFamily: "RalewayBold",
+    color: colors.text,
+    marginTop: 50,
+    padding: 5,
+    alignItems: "center",
+    marginHorizontal: 20,
+  }
 });

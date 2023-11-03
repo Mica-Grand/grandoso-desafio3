@@ -1,5 +1,5 @@
 import { Image, Text, View, ScrollView } from 'react-native';
-import { Header, HeartButton } from '../../components';
+import { Header, HeartButton, ShareItem } from '../../components';
 import React from 'react';
 import styles from './DetailScreen.style';
 import { FontAwesome } from '@expo/vector-icons'
@@ -15,7 +15,17 @@ const DetailScreen = ({ route }) => {
       showsVerticalScrollIndicator={false}>
         <Image style={styles.image} source={{ uri: recipe.images[0] }} loading="auto" />
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{recipe.title}</Text>
+          <View>
+            <Text style={styles.title}>{recipe.title}</Text>
+          </View>
+          <View  style={styles.buttonContainer}>
+            <View>
+              <HeartButton recipe={recipe} />
+            </View>
+            <View style={{  marginLeft: 10}}>
+              <ShareItem recipe={recipe}/>
+              </View>
+          </View>
         </View>
         <View style={styles.textContainer}>
         <Text>{recipe.description}</Text>
@@ -34,9 +44,7 @@ const DetailScreen = ({ route }) => {
           <Text key={index}>{instruction}</Text>
         ))}
       </View>
-        <View style={styles.heartContainer}>
-          <HeartButton recipe={recipe}/>
-        </View>
+      
       </ScrollView>
     </View>
   );
