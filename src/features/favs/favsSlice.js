@@ -20,7 +20,7 @@ export const favsSlice = createSlice({
         );
       },
     setFavoriteRecipes: (state, action) => {
-      state.data = action.payload;
+      state.favoriteRecipes = action.payload;
       state.loading = false;
       state.error = null;
     },

@@ -15,7 +15,7 @@ const HeartButton = ({ recipe }) => {
   const recipeKey = useSelector((state) => state.favs.recipeKeys[recipe.id]);
   let isFavorite = false;
 
-  if (favoriteRecipes) {
+  if (favoriteRecipes && Array.isArray(favoriteRecipes)) {
     isFavorite = favoriteRecipes.some((favRecipe) => favRecipe.id === recipe.id);
   }
   const toggleFavorite = async () => {

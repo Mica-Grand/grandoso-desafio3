@@ -47,6 +47,9 @@ export const recipesApi = createApi({
     getFavoriteRecipes: builder.query({
       query: (localId) => `favoriteRecipes/${localId}.json`,
     }),
+
+
+
   }),
 });
 

@@ -3,15 +3,13 @@ import AuthStackNavigator from './AuthStackNavigator';
 import BottomTabNavigator from './BottomTabNavigator';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCameraImage, setUser } from '../features/auth/authSlice';
-import { setFavoriteRecipes } from "../features/favs/favsSlice";
-import { useGetProfileImageQuery, useGetFavoriteRecipesQuery } from '../services/recipesApi';
+import { useGetProfileImageQuery } from '../services/recipesApi';
 import { fetchSession } from '../db';
 
 const MainNavigator = () => {
   const { user, localId } = useSelector(state => state.auth);
   const dispatch = useDispatch();
   const { data } = useGetProfileImageQuery(localId);
-  const { data: firebaseFavoriteRecipes, isError, isLoading } = useGetFavoriteRecipesQuery();
 
 
 
@@ -39,11 +37,7 @@ const MainNavigator = () => {
   }, []);
 
 
-  useEffect(() => {
-    if (firebaseFavoriteRecipes) {
-      dispatch(setFavoriteRecipes(firebaseFavoriteRecipes));
-    }
-  }, [firebaseFavoriteRecipes]);
+ 
   
   return user ? <BottomTabNavigator /> : <AuthStackNavigator />;
 };

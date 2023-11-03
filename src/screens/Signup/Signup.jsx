@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useSignUpMutation } from '../../services/authApi'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../../features/auth/authSlice'
+import { insertSession } from '../../db'
 
 const Signup = ({navigation}) => {
   const [email, setEmail]= useState("")
@@ -23,6 +24,11 @@ const Signup = ({navigation}) => {
       .then(result => {
           console.log(result)
           dispatch(setUser(result))
+          insertSession({
+            localId: result.localId,
+            email: result.email,
+            token: result.idToken,
+          })
         })
       .catch(err => console.log(err))
     }

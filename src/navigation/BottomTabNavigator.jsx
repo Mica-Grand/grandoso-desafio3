@@ -13,6 +13,8 @@ import { useDispatch } from 'react-redux'
 
 
 
+
+
 const BottomTab=createBottomTabNavigator()
 
 
@@ -22,6 +24,8 @@ function BottomTabNavigator () {
     dispatch(clearUser())
     deleteSession()
   }
+
+
     return (
         <BottomTab.Navigator initialRouteName="Inicio" 
         screenOptions={{
