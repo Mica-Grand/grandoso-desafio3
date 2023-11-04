@@ -23,6 +23,7 @@ export default StyleSheet.create({
     width: 100,
     height: 100,
     marginRight: 10,
+    marginLeft: 10,
   },
   recipeInfo: {
     flex: 1,

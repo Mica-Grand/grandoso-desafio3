@@ -10,7 +10,21 @@ import { useSelector } from "react-redux";
 const RecipesScreen = ({ navigation }) => {
   const category = useSelector((state) => state.explorer.categorySelected);
   const [keyword, setKeyword] = useState("");
+  const [recipes, setRecipes] = useState([])
   const {data, isLoading} = useGetRecipesByCategoryQuery(category);
+
+
+  useEffect(() => {
+    if (!isLoading) {
+      const dataArr = Object.values(data)
+      setRecipes(dataArr)
+      const recipesFiltered = dataArr.filter(recipe =>
+        recipe.title.includes(keyword)
+      )
+      setRecipes(recipesFiltered)
+    }
+  }, [isLoading, keyword])
+
 
   const renderRecipeItem = ({ item }) => {
   
@@ -61,7 +75,7 @@ const RecipesScreen = ({ navigation }) => {
       </View>
       {!isLoading && (
       <FlatList
-        data={Object.values(data)}
+        data={recipes}
         renderItem={renderRecipeItem}
         keyExtractor={(item) => (item ? item.id.toString() : '')}
         style={styles.flatList}
