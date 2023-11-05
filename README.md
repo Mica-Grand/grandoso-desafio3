@@ -6,6 +6,8 @@
 ### Descripción
 Mi proyecto es una app de recetas de cocina. Permite explorar una colección de recetas por categorías, ver los detalles y agregar las recetas a favoritos. 
 
+![Texto alternativo](/assets/apprecetasgif.gif)
+
 ### Tecnologías
 - React Native
 - Expo
